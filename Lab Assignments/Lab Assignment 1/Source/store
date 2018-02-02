@@ -1,0 +1,59 @@
+
+
+                $('form').submit(function(){
+                    if($('#sem').val()=="fall"||$('#sem').val()=="spring"||$('#sem').val()=="summer"){
+
+                        var ac = '<tbody>';
+                        for(var i=0; i< json.courses.length; i++){
+
+                            ac += '<tr>';
+                            ac += '<td>'+ i+1 +'</td>';
+                            ac += '<td>'+ json.courses[i].description +'</td>';
+                            ac += '<td>'+ json.courses[i].level +'</td>';
+                            ac += '<td>'+ json.courses[i].spring +'</td>';
+                            ac += '<td>'+ json.courses[i].summer +'</td>';
+                            ac += '<td>'+ json.courses[i].fall +'</td>';
+                            ac += '<td>'+ json.courses[i].degree +'</td>';
+                            ac += '<td>'+ json.courses[i].instructor +'</td>';
+                            ac += '<td>'+ json.courses[i].prerequisites +'</td>';
+                            ac += '<td>'+ json.courses[i].credits +'</td>';
+                            ac += '<td>'+ json.courses[i].ratings +'</td>';
+                            ac += '<td>'+ json.courses[i].links +'</td>';
+                            ac += '<td>'+ json.courses[i].availability +'</td>';
+                            ac += '<td>'+ json.courses[i].duration +'</td>';
+                            ac +='</tr>';
+                        }
+                        ac += '</tbody>';
+                        $('#ac').append(ac);
+
+                    }
+                });
+
+                $('form').submit(function(){
+                    if($('#sub').val()=="cs"||$('#sub').val()=="law"){
+
+                        var ac = '<tbody>';
+                        for(var i=0; i< json.courses.length; i++){
+
+                            ac += '<tr>';
+                            ac += '<td>'+ i+1 +'</td>';
+                            ac += '<td>'+ json.courses[i].description +'</td>';
+                            ac += '<td>'+ json.courses[i].level +'</td>';
+                            ac += '<td>'+ json.courses[i].spring +'</td>';
+                            ac += '<td>'+ json.courses[i].summer +'</td>';
+                            ac += '<td>'+ json.courses[i].fall +'</td>';
+                            ac += '<td>'+ json.courses[i].degree +'</td>';
+                            ac += '<td>'+ json.courses[i].instructor +'</td>';
+                            ac += '<td>'+ json.courses[i].prerequisites +'</td>';
+                            ac += '<td>'+ json.courses[i].credits +'</td>';
+                            ac += '<td>'+ json.courses[i].ratings +'</td>';
+                            ac += '<td>'+ json.courses[i].links +'</td>';
+                            ac += '<td>'+ json.courses[i].availability +'</td>';
+                            ac += '<td>'+ json.courses[i].duration +'</td>';
+                            ac +='</tr>';
+                        }
+                        ac += '</tbody>';
+                        $('#ac').append(ac);
+
+                    }
+                });
