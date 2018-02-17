@@ -1,0 +1,83 @@
+<!doctype html>
+<html ng-app="toDoApp" ng-controller="toDoController">
+
+<head>
+    <title>Tasks App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <style>
+        body {
+            color: #444;
+            font-size: 14px;
+            font-family: "Roboto", sans-serif;
+            padding: 20px;
+        }
+        h3 {
+            margin-top: 0px;
+        }
+        a {
+            color: #444;
+            text-decoration: none;
+        }
+        td {
+            min-width: 300px;
+            padding-left: 20px;
+            padding-right: 20px;
+            vertical-align: top;
+        }
+        .complete {
+            text-decoration: line-through;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+<h1>My To-do List</h1>
+<h2>Tasks</h2>
+<table>
+    <tr>
+    <td>
+        <h3>Active ({{ tasks.length }})</h3>
+        <span ng-hide="tasks.length">You have no active tasks!</span>
+        <div ng-repeat="task in tasks">
+            <input type="checkbox" ng-click="transferTo($index, tasks, completed)" /> {{ task }}<br />
+        </div>
+    </td>
+    <td>
+        <div ng-show="completed.length">
+            <h3>Completed ({{ completed.length }})</h3>
+            <div ng-repeat="task in completed">
+                <input type="checkbox" ng-click="transferTo($index, completed, tasks)" checked /> <span class="complete">{{ task }}</span><br />
+            </div>
+        </div>
+    </td></tr>
+</table>
+<h2>Add a Task</h2>
+<form ng-submit="addTask()">
+    <input type="text" placeholder="Description" ng-model="newTaskName" />
+    <input type="submit" value="Add" />
+</form>
+
+<script>
+    angular.module('toDoApp', [])
+        .controller('toDoController', ['$scope', function($scope) {
+            $scope.tasks = ['Do the laundry','mobileweb class', 'hello'];
+            $scope.completed = [];
+            $scope.newTaskName = '';
+            $scope.addTask = function() {
+                var name = $scope.newTaskName;
+                if (name && $scope.tasks.indexOf(name) == -1
+                    && $scope.completed.indexOf(name)) {
+                    $scope.tasks.push(name);
+                    $scope.newTaskName = '';
+                }
+            };
+            $scope.transferTo = function(index, start, end) {
+                end.push(start[index]);
+                start.splice(index, 1);
+            }
+        }]);
+</script>
+
+</body>
+</html>

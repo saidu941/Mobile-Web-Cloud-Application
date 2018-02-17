@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="toDoApp" ng-controller="toDoController">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Todo in Angular.js</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="todo.js"></script> // 1. write JS (controller) code in "todo.js" to work with todo list
+</head>
+<body>
+// 2. write html(view) code to display the todo list
+
+
+<h1>My To-do List</h1>
+<h2>Tasks</h2>
+<table>
+    <tr>
+        <td>
+        <h3>Active ({{ tasks.length }})</h3>
+        <span ng-hide="tasks.length">You have no active tasks!</span>
+        <div ng-repeat="task in tasks">
+            <input type="checkbox" ng-click="transferTo($index, tasks, completed)" /> {{ task }}<br />
+        </div>
+        </td>
+
+        <td>
+
+
+        <div ng-show="completed.length">
+            <h3>Completed ({{ completed.length }})</h3>
+            <div ng-repeat="task in completed">
+                <input type="checkbox" ng-click="transferTo($index, completed, tasks)" checked /> <span class="complete">{{ task }}</span><br />
+            </div>
+        </div>
+
+        </td>
+    </tr>
+</table>
+<h2>Add a Task</h2>
+<form ng-submit="addTask()">
+    <input type="text" placeholder="Description" ng-model="newTaskName" />
+    <input type="submit" value="Add" />
+</form>
+
+
+
+</body>
+</html>
