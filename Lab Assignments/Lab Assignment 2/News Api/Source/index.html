@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <title>News APP API</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+</head>
+
+
+
+<body class="body">
+    <div ng-controller="View1Ctrl">
+        <div class="jumbotron text-center">
+            <h1>News Application</h1>
+        </div>
+
+
+        <div class="container" align="center">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <input type="text" class="form-control" id="keyword">
+                    <select id="source">
+                        <option value="none">None</option>
+                        <option value="bbc-news">BBC</option>
+                        <option value="bbc-sport">bbc-sport</option>
+                        <option value="Bild">Bild</option>
+                        <option value="Bloomberg">Bloomberg</option>
+                        <option value="business-insider">business-insider</option>
+                        <option value="Buzzfeed">Buzzfeed</option>
+                        <option value="cnn">CNN</option>
+                        <option value="ars-technica">ars-technica News</option>
+                        <option value="abc-news">ABC News</option>
+                        <option value="forbes">Forbes</option>
+                    </select>
+                    <button class="btn btn-primary" id="search" ng-click="getVenues()"> Search </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <h2 style="text-align: center; color: #1ab188"> News </h2>
+            <ul>
+                <li ng-repeat="venue in venueList" style="font-size: x-large; color: #5e5e5e; text-align: center; list-style: none">
+                   <div class="row">
+                       <div class="col-md-9 col-md-offset-1">
+                           <h2>{{venue.title}}</h2>
+                           <h3>{{venue.description}}</h3>
+                           <h5>{{venue.author}}</h5>
+                           <p>{{venue.time1}}</p>
+                           <img src="{{venue.image}}" href="{{venue.link}}" width="200px" height="150px">
+                       </div>
+                   </div>
+                    <hr>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+
+
+<script>
+    angular.module('myApp', [])
+
+        .controller('View1Ctrl', function ($scope, $http) {
+            $scope.venueList = new Array();
+            $scope.mostRecentReview;
+            $scope.getVenues = function () {
+                var keyword = document.getElementById("keyword").value;
+                var source = document.getElementById("source").value;
+                var handler = $http.get("https://newsapi.org/v2/top-headlines?q="+ keyword + "&sources="+ source +"&apiKey=0d5286dca0154f96870a648e403d7847");
+
+                handler.success(function (data) {
+                        var venues = data.articles;
+                        $scope.venueList=Object.keys(data.articles).map(function (k) {
+                           $scope.isLoading=false;
+                           var i = data.articles[k];
+                           console.log(i);
+                           return{author: i.author, description: i.description, time1: i.publishedAt, title: i.title, link: i.url, image: i.urlToImage}
+                        });
+
+                })
+                handler.error(function (data) {
+                    alert("There was some error processing your request. Please try after some time.");
+                });
+            }
+        });
+</script>
+
+</html>
