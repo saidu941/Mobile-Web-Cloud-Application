@@ -1,0 +1,85 @@
+[
+  {
+    "name": "Saidu Dosapati",
+    "parent": "US",
+    "children": [
+      {
+        "name": "varun chandra",
+        "parent": "US"
+
+      },
+      {
+        "name": "avinash poluru",
+        "parent": "US"
+
+      },
+      {
+        "name": "venkatesh pallay",
+        "parent": "US"
+
+      },
+      {
+        "name": "tom cruise",
+        "parent": "US"
+
+      },
+      {
+        "name": "Nithin",
+        "parent": "US"
+
+      },
+      {
+        "name": "Rakesh",
+        "parent": "US"
+
+      },
+      {
+        "name": "Mani Maddy",
+        "parent": "US"
+
+      },
+      {
+        "name": "Venky papi",
+        "parent": "US"
+
+      },
+      {
+        "name": "Matt Harris",
+        "parent": "US"
+
+      },
+
+      {
+        "name": "akashgarg",
+        "parent": "US"
+
+      },
+      {
+        "name": "Ben Ward",
+        "parent": "US"
+
+      },
+      {
+        "name": "Kenneth P Kufluk",
+        "parent": "US"
+
+      },
+      {
+        "name": "Seth Bindernagel",
+        "parent": "US"
+
+      },
+      {
+        "name": "sundar pichai",
+        "parent": "US"
+
+      },
+      {
+        "name": "tim cook",
+        "parent": "US"
+
+      }
+
+    ]
+  }
+]
