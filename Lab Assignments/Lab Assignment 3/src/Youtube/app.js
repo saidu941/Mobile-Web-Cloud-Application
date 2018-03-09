@@ -5,14 +5,6 @@ myApp.config(function($routeProvider,$httpProvider) {
         .when('/', {
             templateUrl: 'home.html',
             controller: 'homeController'
-        })
-        .when('/register', {
-            templateUrl: 'register.html',
-            controller: 'registerController'
-        })
-        .when('/home', {
-            templateUrl: 'home.html',
-            controller: 'homeController'
         });
 
 });
