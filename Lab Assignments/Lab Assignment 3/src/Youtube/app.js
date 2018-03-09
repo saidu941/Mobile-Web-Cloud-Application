@@ -62,7 +62,7 @@ myApp.controller('homeController', function($scope,$http,$sce) {
     };
 });
 function init () {
-    gapi.client.setApiKey("AIzaSyD_d_XWDzXLeHfv9vPSDzaIZMQaas_olsw");
+    gapi.client.setApiKey("");
     gapi.client.load('youtube', 'v3', function() {
 //
     });
